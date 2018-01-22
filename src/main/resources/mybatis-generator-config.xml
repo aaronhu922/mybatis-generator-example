@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<context id="testTables" targetRuntime="MyBatis3">
+
+		<commentGenerator>
+			<!-- if suppress the generated comments true：yes ： false:no -->
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<!--database connection info -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/{database_name}" userId="root"
+			password="root">
+		</jdbcConnection>
+
+		<!-- Default false，Transform JDBC DECIMAL and NUMERIC into Integer，if true, turn JDBC DECIMAL and 
+			NUMERIC into java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- targetProject:POJO classes location -->
+		<javaModelGenerator targetPackage="org.ahu.production_ms.domain"
+			targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+        <!-- targetProject:mapper files location-->
+		<sqlMapGenerator targetPackage="org.ahu.production_ms.mapper" 
+			targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+		</sqlMapGenerator>
+
+		<!-- targetPackage：mapper interface location-->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="org.ahu.production_ms.mapper" 
+			targetProject=".\src">
+			<property name="enableSubPackages" value="false" />
+		</javaClientGenerator>
+
+		<!-- The tables that you want to generate. -->
+		<table schema="" tableName="custom"></table>
+		<table schema="" tableName="c_order"></table>
+		<table schema="" tableName="product"></table>
+		<table schema="" tableName="order_item"></table>
+		
+
+	</context>
+</generatorConfiguration>
